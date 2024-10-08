@@ -22,6 +22,9 @@ namespace Cherry.Web.Service
                 HttpClient client = _httpClientFactory.CreateClient("CherryAPI");
                 HttpRequestMessage message = new();
                 message.Headers.Add("Accept", "application/json");
+
+                //token
+
                 message.RequestUri = new Uri(requestDto.Url);
                 if (requestDto.Data != null)
                 {
@@ -35,10 +38,10 @@ namespace Cherry.Web.Service
                         message.Method = HttpMethod.Post;
                         break;
                     case ApiType.DELETE:
-                        message.Method = HttpMethod.Post;
+                        message.Method = HttpMethod.Delete;
                         break;
                     case ApiType.PUT:
-                        message.Method = HttpMethod.Post;
+                        message.Method = HttpMethod.Put;
                         break;
                     default:
                         message.Method = HttpMethod.Get;
