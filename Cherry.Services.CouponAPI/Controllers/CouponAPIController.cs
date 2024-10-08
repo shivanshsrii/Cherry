@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Cherry.Services.CouponAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/coupon")]
     [ApiController]
     public class CouponAPIController : ControllerBase
     {
@@ -28,13 +28,13 @@ namespace Cherry.Services.CouponAPI.Controllers
             {
                 IEnumerable<Coupon> objList = _db.Coupons.ToList();
                 _response.Result = _mapper.Map<IEnumerable<CouponDto>>(objList);
-  
+
             }
             catch (Exception ex)
             {
                 _response.IsSuccess = false;
                 _response.Message = ex.Message;
-                
+
             }
             return _response;
         }
@@ -65,7 +65,11 @@ namespace Cherry.Services.CouponAPI.Controllers
             try
             {
                 Coupon obj = _db.Coupons.First(u => u.CouponCode.ToLower() == code.ToLower());
-                
+                if(obj == null)
+                {
+                    _response.IsSuccess = false;
+                }
+
                 _response.Result = _mapper.Map<CouponDto>(obj);
 
             }
@@ -85,7 +89,7 @@ namespace Cherry.Services.CouponAPI.Controllers
             try
             {
                 Coupon obj = _mapper.Map<Coupon>(couponDto);
-                    _db.Coupons.Add(obj);
+                _db.Coupons.Add(obj);
                 _db.SaveChanges();
                 _response.Result = _mapper.Map<CouponDto>(obj);
 
@@ -121,6 +125,7 @@ namespace Cherry.Services.CouponAPI.Controllers
 
 
         [HttpDelete]
+        [Route("{id:int}")]
         public ResponseDto Delete(int id)
         {
             try
