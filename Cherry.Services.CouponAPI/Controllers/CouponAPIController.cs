@@ -2,6 +2,7 @@
 using Cherry.Services.CouponAPI.Data;
 using Cherry.Services.CouponAPI.Models;
 using Cherry.Services.CouponAPI.Models.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -9,6 +10,7 @@ namespace Cherry.Services.CouponAPI.Controllers
 {
     [Route("api/coupon")]
     [ApiController]
+    [Authorize]
     public class CouponAPIController : ControllerBase
     {
         private readonly AppDbContext _db;
@@ -84,6 +86,7 @@ namespace Cherry.Services.CouponAPI.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles ="ADMIN")]
         public ResponseDto Post([FromBody] CouponDto couponDto)
         {
             try
@@ -104,6 +107,7 @@ namespace Cherry.Services.CouponAPI.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "ADMIN")]
         public ResponseDto Put([FromBody] CouponDto couponDto)
         {
             try
@@ -126,6 +130,7 @@ namespace Cherry.Services.CouponAPI.Controllers
 
         [HttpDelete]
         [Route("{id:int}")]
+        [Authorize(Roles = "ADMIN")]
         public ResponseDto Delete(int id)
         {
             try
