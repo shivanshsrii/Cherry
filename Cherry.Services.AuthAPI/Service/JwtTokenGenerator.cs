@@ -15,7 +15,7 @@ namespace Cherry.Services.AuthAPI.Service
         {
            _JwtOptions = jwtOptions.Value;    
         }
-        public string GenerateToken(ApplicationUser applicationUser)
+        public string GenerateToken(ApplicationUser applicationUser, IEnumerable<string> roles)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_JwtOptions.Secret);
@@ -26,6 +26,7 @@ namespace Cherry.Services.AuthAPI.Service
                 new Claim(JwtRegisteredClaimNames.Name,applicationUser.UserName),
 
             };
+            claimList.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Audience = _JwtOptions.Audience,
