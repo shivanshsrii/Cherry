@@ -1,0 +1,6 @@
+@Cherry.Services.ProductAPI_HostAddress = http://localhost:5066
+
+GET {{Cherry.Services.ProductAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

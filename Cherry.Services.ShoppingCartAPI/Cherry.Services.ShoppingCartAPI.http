@@ -1,0 +1,6 @@
+@Cherry.Services.ShoppingCartAPI_HostAddress = http://localhost:5098
+
+GET {{Cherry.Services.ShoppingCartAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

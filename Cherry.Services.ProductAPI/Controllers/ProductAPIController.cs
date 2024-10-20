@@ -1,22 +1,22 @@
 ﻿using AutoMapper;
-using Cherry.Services.CouponAPI.Data;
-using Cherry.Services.CouponAPI.Models;
-using Cherry.Services.CouponAPI.Models.Dto;
+using Cherry.Services.ProductAPI.Data;
+using Cherry.Services.ProductAPI.Models;
+using Cherry.Services.ProductAPI.Models.Dto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace Cherry.Services.CouponAPI.Controllers
+namespace Cherry.Services.ProductAPI.Controllers
 {
-    [Route("api/coupon")]
+    [Route("api/product")]
     [ApiController]
     //[Authorize]
-    public class CouponAPIController : ControllerBase
+    public class ProductAPIController : ControllerBase
     {
         private readonly AppDbContext _db;
         private ResponseDto _response;
         private IMapper _mapper;
-        public CouponAPIController(AppDbContext db, IMapper mapper)
+        public ProductAPIController(AppDbContext db, IMapper mapper)
         {
             _db = db;
             _mapper = mapper;
@@ -28,8 +28,8 @@ namespace Cherry.Services.CouponAPI.Controllers
         {
             try
             {
-                IEnumerable<Coupon> objList = _db.Coupons.ToList();
-                _response.Result = _mapper.Map<IEnumerable<CouponDto>>(objList);
+                IEnumerable<Product> objList = _db.Products.ToList();
+                _response.Result = _mapper.Map<IEnumerable<ProductDto>>(objList);
 
             }
             catch (Exception ex)
@@ -46,33 +46,8 @@ namespace Cherry.Services.CouponAPI.Controllers
         public ResponseDto Get(int id) {
             try
             {
-                Coupon obj = _db.Coupons.FirstOrDefault(u => u.CouponId == id);
-                _response.Result = _mapper.Map<CouponDto>(obj);
-
-            }
-            catch (Exception ex)
-            {
-                _response.IsSuccess = false;
-                _response.Message = ex.Message;
-
-            }
-            return _response;
-        }
-
-
-        [HttpGet]
-        [Route("GetByCode/{code}")]
-        public ResponseDto GetByCode(string code)
-        {
-            try
-            {
-                Coupon obj = _db.Coupons.First(u => u.CouponCode.ToLower() == code.ToLower());
-                if(obj == null)
-                {
-                    _response.IsSuccess = false;
-                }
-
-                _response.Result = _mapper.Map<CouponDto>(obj);
+                Product obj = _db.Products.FirstOrDefault(u => u.ProductId == id);
+                _response.Result = _mapper.Map<ProductDto>(obj);
 
             }
             catch (Exception ex)
@@ -86,15 +61,15 @@ namespace Cherry.Services.CouponAPI.Controllers
 
 
         [HttpPost]
-        [Authorize(Roles ="ADMIN")]
-        public ResponseDto Post([FromBody] CouponDto couponDto)
+        //[Authorize(Roles ="ADMIN")]
+        public ResponseDto Post([FromBody] ProductDto ProductDto)
         {
             try
             {
-                Coupon obj = _mapper.Map<Coupon>(couponDto);
-                _db.Coupons.Add(obj);
+                Product obj = _mapper.Map<Product>(ProductDto);
+                _db.Products.Add(obj);
                 _db.SaveChanges();
-                _response.Result = _mapper.Map<CouponDto>(obj);
+                _response.Result = _mapper.Map<ProductDto>(obj);
 
             }
             catch (Exception ex)
@@ -107,15 +82,15 @@ namespace Cherry.Services.CouponAPI.Controllers
         }
 
         [HttpPut]
-        [Authorize(Roles = "ADMIN")]
-        public ResponseDto Put([FromBody] CouponDto couponDto)
+        //[Authorize(Roles = "ADMIN")]
+        public ResponseDto Put([FromBody] ProductDto ProductDto)
         {
             try
             {
-                Coupon obj = _mapper.Map<Coupon>(couponDto);
-                _db.Coupons.Update(obj);
+                Product obj = _mapper.Map<Product>(ProductDto);
+                _db.Products.Update(obj);
                 _db.SaveChanges();
-                _response.Result = _mapper.Map<CouponDto>(obj);
+                _response.Result = _mapper.Map<ProductDto>(obj);
 
             }
             catch (Exception ex)
@@ -130,13 +105,13 @@ namespace Cherry.Services.CouponAPI.Controllers
 
         [HttpDelete]
         [Route("{id:int}")]
-        [Authorize(Roles = "ADMIN")]
+        //[Authorize(Roles = "ADMIN")]
         public ResponseDto Delete(int id)
         {
             try
             {
-                Coupon obj =_db.Coupons.First(u=>u.CouponId==id);
-                _db.Coupons.Remove(obj);
+                Product obj =_db.Products.First(u=>u.ProductId==id);
+                _db.Products.Remove(obj);
                 _db.SaveChanges();
             }
             catch (Exception ex)
