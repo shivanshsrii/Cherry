@@ -4,6 +4,7 @@ using Cherry.Services.ShoppingCartAPI.Data;
 using Cherry.Services.ShoppingCartAPI.Extensions;
 using Cherry.Services.ShoppingCartAPI.Service;
 using Cherry.Services.ShoppingCartAPI.Service.IService;
+using Cherry.Services.ShoppingCartAPI.Utility;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -20,12 +21,20 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddScoped<IProductService,ProductService>();   
+builder.Services.AddScoped<IProductService,ProductService>();
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<BackendApiAuthenticationHttpclientHandler>();  
+
 builder.Services.AddScoped<ICouponService,CouponService>();   
 builder.Services.AddHttpClient("Product", u => u.BaseAddress = 
-    new Uri(builder.Configuration["ServiceUrls:ProductAPI"]));
+    new Uri(builder.Configuration["ServiceUrls:ProductAPI"]))
+    .AddHttpMessageHandler<BackendApiAuthenticationHttpclientHandler>();
+
 builder.Services.AddHttpClient("Coupon", u => u.BaseAddress =
-    new Uri(builder.Configuration["ServiceUrls:CouponAPI"]));
+    new Uri(builder.Configuration["ServiceUrls:CouponAPI"]))
+    .AddHttpMessageHandler<BackendApiAuthenticationHttpclientHandler>();
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
