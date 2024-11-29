@@ -22,6 +22,9 @@ namespace Cherry.Services.ShoppingCartAPI.Controllers
         private ICouponService _couponService;
         private IConfiguration _configuration;
         private readonly IMessageBus _messageBus;
+
+        private string connectionString = "Endpoint=sb://cherryweb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=LN0HnFwXobc2/k+DMUzcJVFWl7fwVSuGt+ASbM3gHT8=";
+
         public CartAPIController(AppDbContext db, 
             IMapper mapper,IProductService productService,ICouponService couponService,IMessageBus messageBus,IConfiguration configuration)
         {
