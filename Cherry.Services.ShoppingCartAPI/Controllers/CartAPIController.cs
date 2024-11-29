@@ -39,6 +39,7 @@ namespace Cherry.Services.ShoppingCartAPI.Controllers
         {
             try
             {
+                //hello
                 CartDto cart = new()
                 {
                     CartHeader = _mapper.Map<CartHeaderDto>(_db.CartHeaders.First(u => u.UserId == userId)),
