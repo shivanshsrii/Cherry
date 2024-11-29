@@ -1,4 +1,5 @@
 using AutoMapper;
+using Cherry.MessageBus;
 using Cherry.Services.ShoppingCartAPI;
 using Cherry.Services.ShoppingCartAPI.Data;
 using Cherry.Services.ShoppingCartAPI.Extensions;
@@ -27,6 +28,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<BackendApiAuthenticationHttpclientHandler>();  
 
 builder.Services.AddScoped<ICouponService,CouponService>();   
+builder.Services.AddScoped<IMessageBus,MessageBus>();   
 builder.Services.AddHttpClient("Product", u => u.BaseAddress = 
     new Uri(builder.Configuration["ServiceUrls:ProductAPI"]))
     .AddHttpMessageHandler<BackendApiAuthenticationHttpclientHandler>();
