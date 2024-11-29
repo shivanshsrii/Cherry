@@ -13,8 +13,7 @@ namespace Cherry.MessageBus
 {
     public class MessageBus : IMessageBus
     {
-        private string connectionString = "Endpoint=sb://cherryweb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=CN0HnFwXobc2/k+DMUzcJVFWl7fwVSuGt+ASbM3gHT8=";
-        private string connectionString1 = "Endpoint=sb://cherryweb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=LN0HnFwXobc2/k+DMUzcJVFWl7fwVSuGt+ASbM3gHT8=";
+        //private string connectionString = "Endpoint=sb://cherryweb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=CN0HnFwXobc2/k+DMUzcJVFWl7fwVSuGt+ASbM3gHT8=";
         public async Task PublishMessage(object message,string topic_queue_Name)
         {
             var configuration = new ConfigurationBuilder().SetBasePath(AppContext.BaseDirectory).AddJsonFile("appSettings.json").Build();
