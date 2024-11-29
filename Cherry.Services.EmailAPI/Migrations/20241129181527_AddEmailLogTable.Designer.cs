@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cherry.Services.EmailAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241128055200_AddEmailLogTable")]
+    [Migration("20241129181527_AddEmailLogTable")]
     partial class AddEmailLogTable
     {
         /// <inheritdoc />
