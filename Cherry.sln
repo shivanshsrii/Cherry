@@ -19,7 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cherry.Services.AuthAPI", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cherry.Services.ProductAPI", "Cherry.Services.ProductAPI\Cherry.Services.ProductAPI.csproj", "{3BDD40C4-7697-45D5-8186-B84B72D199D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cherry.Services.ShoppingCartAPI", "Cherry.Services.ShoppingCartAPI\Cherry.Services.ShoppingCartAPI.csproj", "{052102B0-8359-4837-9632-76F6F486FC22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cherry.Services.ShoppingCartAPI", "Cherry.Services.ShoppingCartAPI\Cherry.Services.ShoppingCartAPI.csproj", "{052102B0-8359-4837-9632-76F6F486FC22}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cherry.MessageBus", "Cherry.MessageBus\Cherry.MessageBus.csproj", "{0F44D3D5-6FA0-4B3D-B44D-2C24841F9323}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cherry.Services.EmailAPI", "Cherry.Services.EmailAPI\Cherry.Services.EmailAPI.csproj", "{CF9ED4F6-8547-417E-BE50-D38A7D17B878}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +51,14 @@ Global
 		{052102B0-8359-4837-9632-76F6F486FC22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{052102B0-8359-4837-9632-76F6F486FC22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{052102B0-8359-4837-9632-76F6F486FC22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F44D3D5-6FA0-4B3D-B44D-2C24841F9323}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F44D3D5-6FA0-4B3D-B44D-2C24841F9323}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F44D3D5-6FA0-4B3D-B44D-2C24841F9323}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F44D3D5-6FA0-4B3D-B44D-2C24841F9323}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF9ED4F6-8547-417E-BE50-D38A7D17B878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF9ED4F6-8547-417E-BE50-D38A7D17B878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF9ED4F6-8547-417E-BE50-D38A7D17B878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF9ED4F6-8547-417E-BE50-D38A7D17B878}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +69,8 @@ Global
 		{E8373706-9958-4E00-A230-16BE510F1AB0} = {A5CC7416-54E7-4FA4-A88F-A74C5D5C30CD}
 		{3BDD40C4-7697-45D5-8186-B84B72D199D2} = {A5CC7416-54E7-4FA4-A88F-A74C5D5C30CD}
 		{052102B0-8359-4837-9632-76F6F486FC22} = {A5CC7416-54E7-4FA4-A88F-A74C5D5C30CD}
+		{0F44D3D5-6FA0-4B3D-B44D-2C24841F9323} = {A667165B-B173-421E-B13C-EE6788208C0A}
+		{CF9ED4F6-8547-417E-BE50-D38A7D17B878} = {A5CC7416-54E7-4FA4-A88F-A74C5D5C30CD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BCE0E2A3-DA65-4CA6-A728-302819C04013}

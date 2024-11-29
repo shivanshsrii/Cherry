@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Cherry.MessageBus;
 using Cherry.Services.ShoppingCartAPI.Data;
 using Cherry.Services.ShoppingCartAPI.Models;
 using Cherry.Services.ShoppingCartAPI.Models.Dto;
@@ -19,12 +20,16 @@ namespace Cherry.Services.ShoppingCartAPI.Controllers
         private readonly AppDbContext _db;
         private IProductService _productService; 
         private ICouponService _couponService;
+        private IConfiguration _configuration;
+        private readonly IMessageBus _messageBus;
         public CartAPIController(AppDbContext db, 
-            IMapper mapper,IProductService productService,ICouponService couponService)
+            IMapper mapper,IProductService productService,ICouponService couponService,IMessageBus messageBus,IConfiguration configuration)
         {
             _db = db;   
+            _messageBus = messageBus;   
             _productService = productService;
             _couponService=couponService;
+            _configuration = configuration;
             this._response = new ResponseDto(); 
             _mapper = mapper;  
         }
@@ -77,6 +82,22 @@ namespace Cherry.Services.ShoppingCartAPI.Controllers
                 cartFromDb.CouponCode = cartDto.CartHeader.CouponCode;
                 _db.CartHeaders.Update(cartFromDb);
                 await _db.SaveChangesAsync();
+                _response.Result = true;
+            }
+            catch (Exception ex)
+            {
+                _response.IsSuccess = false;
+                _response.Message = ex.ToString();
+            }
+            return _response;
+        }
+
+        [HttpPost("EmailCartRequest")]
+        public async Task<object> EmailCartRequest([FromBody] CartDto cartDto)
+        {
+            try
+            {
+                await _messageBus.PublishMessage(cartDto,_configuration.GetValue<string>("TopicAndQueueNames:EmailShoppingCart"));
                 _response.Result = true;
             }
             catch (Exception ex)
