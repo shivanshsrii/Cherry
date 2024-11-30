@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Cherry.MessageBus
 {
+    //hello
     public class MessageBus : IMessageBus
     {
         private string connectionString = "Endpoint=sb://cherryweb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=CN0HnFwXobc2/k+DMUzcJVFWl7fwVSuGt+ASbM3gHT8=";
