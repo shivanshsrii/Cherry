@@ -1,4 +1,7 @@
 using Cherry.Services.EmailAPI.Data;
+using Cherry.Services.EmailAPI.Extension;
+using Cherry.Services.EmailAPI.Messaging;
+using Cherry.Services.EmailAPI.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +12,11 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+var optionBuilder=new DbContextOptionsBuilder<AppDbContext>();  
+optionBuilder.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+builder.Services.AddSingleton(new EmailService(optionBuilder.Options));
 
+builder.Services.AddSingleton<IAzureServiceBusConsumer,AzureServiceBusConsumer>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -30,6 +37,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 ApplyMigration();
+app.UseAzureServiceBusConsumer();   
 app.Run();
 
 void ApplyMigration()
