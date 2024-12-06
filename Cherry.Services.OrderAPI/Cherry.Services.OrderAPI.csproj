@@ -18,10 +18,12 @@
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	  </PackageReference>
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-	  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.2" />  </ItemGroup>
+	  <PackageReference Include="Stripe.net" Version="47.2.0-beta.1" />
+	  <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.2" />
+  </ItemGroup>
 
-	  <ItemGroup>
-		<ProjectReference Include="..\Cherry.MessageBus\Cherry.MessageBus.csproj" />
-	  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cherry.MessageBus\Cherry.MessageBus.csproj" />
+  </ItemGroup>
 
 </Project>

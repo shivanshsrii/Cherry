@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Cherry.Web.Models 
+﻿namespace Cherry.Services.OrderAPI.Models.Dto
 {
     public class CartHeaderDto
     {
@@ -11,11 +9,8 @@ namespace Cherry.Web.Models
         public double Discount { get; set; }
       
         public double CartTotal { get; set; }
-        [Required]
         public string? FullName { get; set; }
-        [Required]
         public string? Phone { get; set; }
-        [Required]
         public string? Email { get; set; }
     }
 }
