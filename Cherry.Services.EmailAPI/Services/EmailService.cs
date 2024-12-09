@@ -1,4 +1,5 @@
 ﻿using Cherry.Services.EmailAPI.Data;
+using Cherry.Services.EmailAPI.Message;
 using Cherry.Services.EmailAPI.Models;
 using Cherry.Services.ShoppingCartAPI.Models.Dto;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +32,12 @@ namespace Cherry.Services.EmailAPI.Services
             }
             message.Append("</ul");
             await LogAndEmail(message.ToString(),cartDto.CartHeader.Email);
+        }
+
+        public async Task LogOrderPlaced(RewardsMessage rewardsDto)
+        {
+            string message="New Order Placed.<br/> Order ID : " + rewardsDto.OrderId;
+            await LogAndEmail(message, "admin@gmail.com");
         }
 
         public async Task RegisterUserEmailAndLog(string email)

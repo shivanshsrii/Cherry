@@ -1,4 +1,5 @@
-﻿using Cherry.Services.ShoppingCartAPI.Models.Dto;
+﻿using Cherry.Services.EmailAPI.Message;
+using Cherry.Services.ShoppingCartAPI.Models.Dto;
 
 namespace Cherry.Services.EmailAPI.Services
 {
@@ -6,5 +7,6 @@ namespace Cherry.Services.EmailAPI.Services
     {
         Task EmailCartAndLog(CartDto cartDto);
         Task RegisterUserEmailAndLog(string email);
+        Task LogOrderPlaced(RewardsMessage rewardsDto);
     }
 }
