@@ -8,8 +8,8 @@
         public static string ShoppingCartAPIBase { get; set; }
         public static string OrderAPIBase { get; set; }
 
-        public const string RoleAdmin = "Admin";
-        public const string RoleCustomer = "Customer";
+        public const string RoleAdmin = "ADMIN";
+        public const string RoleCustomer = "CUSTOMER";
         public const string TokenCookie = "JWTToken";
 
 
@@ -27,5 +27,11 @@
         public const string Status_Completed = "Completed";
         public const string Status_Refunded = "Refunded";
         public const string Status_Cancelled = "Cancelled";
+
+        public enum ContentType
+        {
+            Json,
+            MultipartFormData,
+        }
     }
 }

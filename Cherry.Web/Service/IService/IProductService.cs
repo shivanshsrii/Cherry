@@ -4,7 +4,6 @@ namespace Cherry.Web.Service.IService
 {
     public interface IProductService
     {
-        Task<ResponseDto?> GetProductAsync(string productCode);
         Task<ResponseDto?> GetAllProductsAsync();
         Task<ResponseDto?> GetProductByIdAsync(int id);
         Task<ResponseDto?> CreateProductsAsync(ProductDto productDto);

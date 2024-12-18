@@ -1,5 +1,4 @@
-﻿using System.Security.AccessControl;
-using static Cherry.Web.Utility.SD;
+﻿using static Cherry.Web.Utility.SD;
 
 namespace Cherry.Web.Models
 {
@@ -9,5 +8,6 @@ namespace Cherry.Web.Models
         public string Url { get; set; }
         public object Data { get; set; }
         public string AccessToken { get; set; }
+        public ContentType ContentType { get; set; }=ContentType.Json;  
     }
 }
