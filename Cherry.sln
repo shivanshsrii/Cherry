@@ -27,7 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cherry.Services.EmailAPI", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cherry.Services.OrderAPI", "Cherry.Services.OrderAPI\Cherry.Services.OrderAPI.csproj", "{76BAB4B9-4DF7-4323-B054-B8B05A24C30B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cherry.Services.RewardAPI", "Cherry.Services.RewardAPI\Cherry.Services.RewardAPI.csproj", "{CA47BDAE-BD1A-4C5E-8379-D5B7590A3673}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cherry.Services.RewardAPI", "Cherry.Services.RewardAPI\Cherry.Services.RewardAPI.csproj", "{CA47BDAE-BD1A-4C5E-8379-D5B7590A3673}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cherry.GatewaySolution", "Cherry.GatewaySolution\Cherry.GatewaySolution.csproj", "{44F7F1D3-0F2E-419F-92C9-4BFDF6635A2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{CA47BDAE-BD1A-4C5E-8379-D5B7590A3673}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA47BDAE-BD1A-4C5E-8379-D5B7590A3673}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA47BDAE-BD1A-4C5E-8379-D5B7590A3673}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44F7F1D3-0F2E-419F-92C9-4BFDF6635A2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44F7F1D3-0F2E-419F-92C9-4BFDF6635A2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44F7F1D3-0F2E-419F-92C9-4BFDF6635A2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44F7F1D3-0F2E-419F-92C9-4BFDF6635A2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +91,7 @@ Global
 		{CF9ED4F6-8547-417E-BE50-D38A7D17B878} = {A5CC7416-54E7-4FA4-A88F-A74C5D5C30CD}
 		{76BAB4B9-4DF7-4323-B054-B8B05A24C30B} = {A5CC7416-54E7-4FA4-A88F-A74C5D5C30CD}
 		{CA47BDAE-BD1A-4C5E-8379-D5B7590A3673} = {A5CC7416-54E7-4FA4-A88F-A74C5D5C30CD}
+		{44F7F1D3-0F2E-419F-92C9-4BFDF6635A2E} = {88312F44-0CCE-4A42-B1A0-8BBBDFD8110B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BCE0E2A3-DA65-4CA6-A728-302819C04013}
